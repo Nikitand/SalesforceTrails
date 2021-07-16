@@ -1,6 +1,6 @@
 @isTest
 public class AddPrimaryContactTest {
-    @test
+    @isTest
     static void testQueueableClass() {
         List<Account> accounts = new List<Account>();
         // add a parent account
@@ -12,15 +12,12 @@ public class AddPrimaryContactTest {
             else{
                 acc.BillingState='CA';
             }
-
             accounts.add(acc);
         }
         insert accounts;
 
         Contact contact = new Contact(FirstName='Nikita', LastName='Osoprilko');
         insert contact;
-
-    
     
         Test.startTest();
         Id jobsId =System.enqueueJob(new AddPrimaryContact(contact, 'CA'));
